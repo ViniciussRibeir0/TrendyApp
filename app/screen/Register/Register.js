@@ -19,8 +19,10 @@ function Register() {
         <Input placeholderTextColor="#484848"
                 placeholder="Phone Number"></Input>    
         <Input placeholderTextColor="#484848"
+                secureTextEntry={true}
                 placeholder="Password" ></Input> 
         <Input placeholderTextColor="#484848"
+                secureTextEntry={true}
                 placeholder="Confirm Password" ></Input>      
         <RegisterSubmit><TextSubmit>Register Now!</TextSubmit></RegisterSubmit>       
     </Container>

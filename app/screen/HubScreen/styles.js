@@ -1,17 +1,20 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-    padding-top: 20px;
+    padding: 20px;
 `
 
 export const Title = styled.Text`
     color: #FFF;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
+    marginTop: 9px
 `  
 
 export const Text = styled.Text`
-    font-size: 16px;
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
 `
 
 export const SubTitle = styled.Text`

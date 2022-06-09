@@ -24,6 +24,18 @@ import { View,
   import { useFonts } from 'expo-font';
   import Carousel from 'react-native-snap-carousel';
   import Pagination from 'react-native-snap-carousel';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import ProfileScreen from '../ProfileScreen/ProfileScreen';
+import Signin from '../Signin/Signin';
+import Register from '../Register/Register';
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
+import PasswordUpdated from '../PasswordUpdated/PasswordUpdated'
+import { Ionicons } from '@expo/vector-icons'
+
+
+const Drawer = createDrawerNavigator();
 
 const trendsData = [
     {   
@@ -32,6 +44,10 @@ const trendsData = [
     },
     {   
         title: 'Trending Nunca',
+        image: 'https://images.ctfassets.net/b4k16c7lw5ut/jOc1IyE2cWic48QMS1mKb/24de5fb94d45b4fc9d0247a293298c31/Blog_thumbnails_-_2022-02-03T111636.748.png?w=1920&h=1080&q=50&fm=webp'
+    },
+    {   
+        title: 'Trending Now',
         image: 'https://images.ctfassets.net/b4k16c7lw5ut/jOc1IyE2cWic48QMS1mKb/24de5fb94d45b4fc9d0247a293298c31/Blog_thumbnails_-_2022-02-03T111636.748.png?w=1920&h=1080&q=50&fm=webp'
     }
 ]
@@ -44,6 +60,10 @@ const musicsData = [
     {
         title: 'Hot Music',
         image: 'https://cdn.discordapp.com/attachments/963977573241602138/963977687452495882/artworks-NTWumskIAtzxndKO-yz1ryA-t500x500.jpg'
+    },
+    {
+        title: 'Hot Music',
+        image: 'https://cdn.discordapp.com/attachments/963977573241602138/963977687804833882/harry_styles.jpg'
     }
 ]
 
@@ -55,11 +75,16 @@ const moviesData = [
     {
         tile: 'Secrets',
         image: 'https://pbs.twimg.com/media/FMsKCLpVEAA7Y81?format=jpg&name=4096x4096'
+    },
+    {
+        title: 'Hot Movies',
+        image: 'https://cdn.discordapp.com/attachments/963977573241602138/963979691683893268/batman.webp'
     }
-]
+];
 
+const Tab = createBottomTabNavigator();
 
-function Homepage(){
+function Homepage({ navigation }){
 
     function renderItem({ item }){
         return(
@@ -79,13 +104,17 @@ function Homepage(){
         
         <Container style={{flex:1,backgroundColor:'#18171F'}}>
             <ScrollView>
-                <View style={{flexDirection:'row',justifyContent:'space-between', marginBottom:20}}>
+                <View style={{flexDirection:'row',justifyContent:'space-between', marginBottom:20,alignItems:'center'}}>
                 <Hamburger>
-                    <Icon name="bars" color='white' size={30}/>
-                </Hamburger>
-                <TouchableOpacity>
                     <ImageBackground
-                        source={require('../../assets/Lindo.png')}
+                    source={require('../../assets/logo.png')}
+                    style={{width:55, height:45}}
+                    imageStyle={{borderRadius: 10}}
+                    />
+                </Hamburger>
+                <TouchableOpacity onPress={() => navigation.navigate('ProfileScreen')}>
+                    <ImageBackground 
+                        source={require('../../assets/Lindo2.png')}
                         style={{width:35, height:35}}
                         imageStyle={{borderRadius: 25}}
                     />
@@ -95,16 +124,18 @@ function Homepage(){
                 <View
                 style={{
                     flexDirection: 'row',
-                    borderColor: '#C6C6C6',
+                    borderColor: '#373543',
                     borderWidth: 1,
                     borderRadius: 8,
                     paddingHorizontal: 10,
                     paddingVertical: 8,
-                    marginTop: 10
+                    marginTop: 10,
+                    backgroundColor: '#373543',
+                    alignItems:'center'
                 }}
                 >   
                     <Feather name="search" size={20} color="#C6C6C6" style={{marginRight: 5}} />
-                    <Input placeholder="Search" placeholderTextColor="#484848" />
+                    <Input placeholder="Search" placeholderTextColor="#fff"/>
                 </View>
 
                 <View
@@ -124,7 +155,7 @@ function Homepage(){
                     data={trendsData}
                     renderItem={renderItem.bind(this)}
                     sliderWidth={300}
-                    itemWidth={300}
+                    itemWidth={200}
                     useScrollView={true}
                 />
 
@@ -145,7 +176,7 @@ function Homepage(){
                     data={musicsData}
                     renderItem={renderItem.bind(this)}
                     sliderWidth={300}
-                    itemWidth={300}
+                    itemWidth={200}
                     useScrollView={true}
                 />  
 
@@ -166,13 +197,16 @@ function Homepage(){
                     data={moviesData}
                     renderItem={renderItem.bind(this)}
                     sliderWidth={300}
-                    sliderHeight={600}
-                    itemWidth={300}
+                    itemWidth={200}
                     useScrollView={true}
                 />
 
             </ScrollView>
+
+                
+                
         </Container>
+        
     )
 }
 

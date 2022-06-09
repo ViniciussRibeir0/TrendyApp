@@ -7,7 +7,11 @@ import ForgotPassword from './app/screen/ForgotPassword/ForgotPassword';
 import NewPassword from './app/screen/NewPassword/NewPassword';
 import PasswordUpdated from './app/screen/PasswordUpdated/PasswordUpdated';
 import Homepage from './app/screen/Homepage/Homepage';
-import { ProfileScreen } from "./app/screen/ProfileScreen/ProfileScreen";
+import ProfileScreen from "./app/screen/ProfileScreen/ProfileScreen";
+import HubScreen from './app/screen/HubScreen/HubScreen';
+import NotificationScreen from './app/screen/NotificationScreen/NotificationScreen';
+import TrendScreen from './app/screen/TrendScreen/TrendScreen'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { 
   Poppins_100Thin,
   Poppins_100Thin_Italic,
@@ -34,6 +38,7 @@ import AppLoading from 'expo-app-loading';
 
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // const Drawer = createDrawerNavigator({
 //   ProfileScreen
@@ -77,6 +82,10 @@ export default function App() {
           <Stack.Screen name='PasswordUpdated' component={PasswordUpdated} />
           <Stack.Screen name='Register' component={Register} />
           <Stack.Screen name='Homepage' component={Homepage} />
+          <Stack.Screen name='ProfileScreen' component={ProfileScreen} />
+          <Stack.Screen name='HubScreen' component={HubScreen} />
+          <Stack.Screen name='TrendScreen' component={TrendScreen} />
+          <Stack.Screen name='NotificationScreen' component={NotificationScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

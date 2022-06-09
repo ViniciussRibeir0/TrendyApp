@@ -18,8 +18,13 @@ import { KeyboardView,
     } from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import  Feather  from 'react-native-vector-icons/Feather'
+import Homepage from '../Homepage/Homepage';
+import ProfileScreen from '../ProfileScreen/ProfileScreen';
 
 
+const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function  Signin({ navigation }) {
@@ -47,7 +52,7 @@ function  Signin({ navigation }) {
                 placeholderTextColor="#484848"
                 placeholder="E-mail" 
             ></Input>
-            <Icon name="user" size={30} color="white" style={{marginRight:15, marginTop: 15}} />
+            <Feather name="user" size={30} color="white" style={{marginRight:15, marginTop: 15}} />
             </View>
 
             <View
@@ -62,12 +67,13 @@ function  Signin({ navigation }) {
             >
             <Input
                 placeholderTextColor="#484848"
+                secureTextEntry={true}
                 placeholder="Password" 
             ></Input>
             <Icon name="eye-slash" size={30} color="white" style={{marginRight:10, marginTop: 15, marginLeft: 7}} />
             </View>
             
-            <ButtonSubmit onPress={() => navigation.navigate('Homepage')}>
+            <ButtonSubmit onPress={() => navigation.navigate('HubScreen')}>
                 
                 <TextSubmit>Login</TextSubmit>
             </ButtonSubmit>
@@ -91,6 +97,7 @@ function  Signin({ navigation }) {
                 <Text style={{textDecorationLine: 'underline', color: 'white', marginTop: 10,}}>You are not registered? Register Now!</Text>
             </RegisterSubmit>
 
+            
         </Container>
         </KeyboardView>    
         
